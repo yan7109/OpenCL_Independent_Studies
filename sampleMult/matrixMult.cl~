@@ -1,0 +1,120 @@
+// Defines BLOCK_SIZE
+// #include "matrixMult.h"
+
+// This is the definition of a kernel. Notice a few attributes provided to it:
+// The reqd_work_group_size specifies the exact dimensions of the work group. This
+// allows the compiler to optimize the hardware for this case. In particular, it scales the
+// sizes of barriers and optimizes the loop structure to be able to simultaneously run several
+// work groups of the specified size.
+// The num_vector_lanes attribute suggests and a vectorization method to be used when creating the
+// hardware circuit for this kernel. In particular, it states that each thread should perform the work
+// of eight threads thus widening the datapath in the kernel. To make the this flow easy to use, this
+// setting does not affect how the kernel is invoked from the host. That is, the host still specifies
+// the workgroup size to be (BLOCK_SIZE, BLOCK_SIZE, 1) and the hardware circuit reduces it internally
+// to a workgroup size that is an 4th of the size.
+
+__kernel 
+void matrixMult( // Input and output matrices
+                 __global float/* *restrict*/ *W,
+                 const __global float *M,
+                 const __global float *V, 
+                 // Widths of matrices.
+                 int width, int height,
+                 __local float *partialDotProduct,
+                 __local float *scratch,
+                 __global float *result)
+{
+
+float sum = 0.0f;
+__global float* A;
+uint i;
+uint j = 0;
+uint indx = get_global_id(0);
+__local float xs[8192];
+for (i = get_local_id(0); i< height; i+= get_local_size(0)) {
+  xs[i] = V[i];
+}
+
+mem_fence(CLK_LOCAL_MEM_FENCE | CLK_GLOBAL_MEM_FENCE);
+A=&M[indx];
+for (i=0; i<height; i++) {
+  sum += xs[i]*A[j];
+  j += width;
+}
+
+W[indx] = sum;
+mem_fence(CLK_LOCAL_MEM_FENCE);
+/*
+    // Matrix-Vector Multiply
+    // Each work-group handles as many matrix rows as necessary
+    for (uint y = get_group_id(0); y < height; y += get_num_groups(0)) {
+
+        // Row pointer
+        const __global float* row = M + y * width;
+
+        // Each work-item accumulates as many products as necessary
+        // into local variable "sum"
+        float sum = 0;
+        for (uint x = get_local_id(0); x < width; x += get_local_size(0))
+            sum += row[x] * V[x];
+
+        // Each partial dot product is stored in shared memory
+        partialDotProduct[get_local_id(0)] = sum;
+
+        // Perform parallel reduction to add each work-item's
+        // partial dot product together
+        for (uint stride = get_local_size(0) / 2; stride > 0; stride /= 2) {
+
+            // Synchronize to make sure each work-item is done updating
+            // shared memory; this is necessary because work-items read
+            // results that have been written by other work-items
+            barrier(CLK_LOCAL_MEM_FENCE);
+
+            // Only the first work-items in the work-group add elements together
+            if (get_local_id(0) < stride) {
+
+                // Add two elements from the "partialDotProduct" array
+                // and store the result in partialDotProduct[index]
+                partialDotProduct[get_local_id(0)] += partialDotProduct[get_local_id(0) + stride];
+            }
+        }
+
+        // Write the result of the reduction to global memory
+        if (get_local_id(0) == 0)
+            W[y] = partialDotProduct[0];
+
+        // Synchronize to make sure the first work-item is done with
+        // reading partialDotProduct
+        barrier(CLK_LOCAL_MEM_FENCE);
+
+    }
+*/
+/*
+  // Max
+  int global_index = get_global_id(0);
+  int local_index = get_local_id(0);
+  // Load data into local memory
+  if (global_index < height) {
+    scratch[local_index] = W[global_index];
+  } else {
+    // Infinity is the identity element for the min operation
+    scratch[local_index] = 0;
+  }
+  barrier(CLK_LOCAL_MEM_FENCE);
+  for(int offset = 1;
+      offset < get_local_size(0);
+      offset <<= 1) {
+    int mask = (offset << 1) - 1;
+    if ((local_index & mask) == 0) {
+      float other = scratch[local_index + offset];
+      float mine = scratch[local_index];
+      scratch[local_index] = (mine > other) ? mine : other;
+    }
+    barrier(CLK_LOCAL_MEM_FENCE);
+  }
+
+  if (local_index == 0) {
+    result[get_group_id(0)] = scratch[0];
+  }
+*/
+}

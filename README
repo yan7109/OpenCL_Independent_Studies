@@ -1,0 +1,3 @@
+This repository contains exploratory studies done on OpenCL performance and optimization techniques for various heterogeneous platforms. The host is typically the CPU. Kernels are to be run on FPGA and GPU.
+
+All right reserved. - Derek Yan, derek.zh.yan@stanford.edu, Feb 28/14
