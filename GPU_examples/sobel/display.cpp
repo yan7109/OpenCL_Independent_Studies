@@ -1,7 +1,7 @@
 #define NOMINMAX // so that windows.h does not define min/max macros
 
-#include <GL/freeglut.h>
-#include <CL/opencl.h>
+#include "freeglut.h"
+#include <CL/cl.h>
 #include <algorithm>
 #include <iostream>
 #include "parse_ppm.h"
@@ -54,34 +54,34 @@ void filter(unsigned int *output)
     cl_int status;
 
     status = clEnqueueWriteBuffer(queue, in_buffer, CL_FALSE, 0, sizeof(unsigned int) * rows * cols, input, 0, NULL, NULL);
-    if (status != CL_SUCCESS) printf("Error: could not copy data into device");
+    if (status != CL_SUCCESS) std::cout << "Error: could not copy data into device" << std::endl;
 
     status = clFinish(queue);
-    if (status != CL_SUCCESS) printf("Error: could not finish successfully");
+    if (status != CL_SUCCESS) std::cout << "Error: could not finish successfully" << std::endl;
 
     status = clSetKernelArg(kernel, 3, sizeof(unsigned int), &thresh);
-    if (status != CL_SUCCESS) printf("Error: could not set sobel threshold");
+    if (status != CL_SUCCESS) std::cout << "Error: could not set sobel threshold" << std::endl;
 
     cl_event event;
     status = clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &sobelSize, &sobelSize, 0, NULL, &event);
-    if (status != CL_SUCCESS) printf("Error: could not enqueue sobel filter");
+    if (status != CL_SUCCESS) std::cout << "Error: could not enqueue sobel filter" << std::endl;
 
     status  = clFinish(queue);
-    if (status != CL_SUCCESS) printf("Error: could not finish successfully");
+    if (status != CL_SUCCESS) std::cout << "Error: could not finish successfully" << std::endl;
 
     cl_ulong start, end;
     status  = clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(cl_ulong), &start, NULL);
     status |= clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(cl_ulong), &end, NULL);
-    if (status != CL_SUCCESS) printf("Error: could not get profile information");
+    if (status != CL_SUCCESS) std::cout << "Error: could not get profile information" << std::endl;
     clReleaseEvent(event);
 
     fps_raw = (int)(1.0f / ((end - start) * 1e-9f));
 
     status = clEnqueueReadBuffer(queue, out_buffer, CL_FALSE, 0, sizeof(unsigned int) * rows * cols, output, 0, NULL, NULL);
-    if (status != CL_SUCCESS) printf("Error: could not copy data from device");
+    if (status != CL_SUCCESS) std::cout << "Error: could not copy data from device" << std::endl;
 
     status = clFinish(queue);
-    if (status != CL_SUCCESS) printf("Error: could not successfully finish copy");
+    if (status != CL_SUCCESS) std::cout << "Error: could not successfully finish copy" << std::endl;
 }
 
 char* readSourceFile(const char *sourceFilename) {
@@ -105,17 +105,17 @@ char* readSourceFile(const char *sourceFilename) {
 
   errs = fseek(fp, 0, SEEK_END);
   if (errs != 0) {
-    printf("Error seeking to end of file");
+    std::cout << "Error seeking to end of file" << std::endl;
     exit(-1);
   }
   size = ftell(fp);
   if (size < 0) {
-    printf("Errror getting file position");
+    std::cout << "Errror getting file position" << std::endl;
     exit(-1);
   }
   errs = fseek(fp, 0, SEEK_SET);
   if (errs != 0){
-    printf("Error seeking to start of file\n");
+    std::cout << "Error seeking to start of file\n" << std::endl;
     exit(-1);
   }
   source = (char *) malloc(size + 1);
@@ -132,6 +132,7 @@ char* readSourceFile(const char *sourceFilename) {
 int main(int argc, char **argv)
 {
     imageFilename = (argc > 1) ? argv[1] : "butterflies.ppm";
+
 
     initGL(argc, argv);
     initCL();
@@ -169,7 +170,7 @@ void initCL()
     status = clGetPlatformIDs(1, &platform, &num_platforms);
 
     status = clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, NULL);
-    if (status != CL_SUCCESS) printf("Error: could not query devices");
+    if (status != CL_SUCCESS) std::cout << "Error: could not query devices" << std::endl;
     num_devices = 1; // always only using one device
 
     char info[256];
@@ -177,32 +178,33 @@ void initCL()
     deviceInfo = info;
 
     context = clCreateContext(0, num_devices, &device, NULL, NULL, &status);
-    if (status != CL_SUCCESS) printf("Error: could not create OpenCL context");
+    if (status != CL_SUCCESS) std::cout << "Error: could not create OpenCL context" << std::endl;
 
     queue = clCreateCommandQueue(context, device, 0, &status);
-    if (status != CL_SUCCESS) printf("Error: could not create command queue");
+    if (status != CL_SUCCESS) std::cout << "Error: could not create command queue" << std::endl;
 
     char *source_str = readSourceFile(source_file);
 
     program = clCreateProgramWithSource(context, 1, (const char **) &source_str, NULL, &status);
 
     status = clBuildProgram(program, num_devices, &device, "", NULL, NULL);
-    if (status != CL_SUCCESS) printf("Error: could not build program");
+    if (status != CL_SUCCESS) std::cout << "Error: could not build program" << std::endl;
 
     kernel = clCreateKernel(program, "sobel", &status);
-    if (status != CL_SUCCESS) printf("Error: could not create sobel kernel");
+    if (status != CL_SUCCESS) std::cout << "Error: could not create sobel kernel" << std::endl;
 
     in_buffer = clCreateBuffer(context, CL_MEM_READ_ONLY, sizeof(unsigned int) * rows * cols, NULL, &status);
-    if (status != CL_SUCCESS) printf("Error: could not create device buffer");
+    if (status != CL_SUCCESS) std::cout << "Error: could not create device buffer" << std::endl;
 
     out_buffer = clCreateBuffer(context, CL_MEM_WRITE_ONLY, sizeof(unsigned int) * rows * cols, NULL, &status);
-    if (status != CL_SUCCESS) printf("Error: could not create output buffer");
+    if (status != CL_SUCCESS) std::cout << "Error: could not create output buffer" << std::endl;
 
     int pixels = cols * rows;
+
     status  = clSetKernelArg(kernel, 0, sizeof(cl_mem), &in_buffer);
     status |= clSetKernelArg(kernel, 1, sizeof(cl_mem), &out_buffer);
     status |= clSetKernelArg(kernel, 2, sizeof(int), &pixels);
-    if (status != CL_SUCCESS) printf("Error: could not set sobel args");
+    if (status != CL_SUCCESS) std::cout << "Error: could not set sobel args" << std::endl;
 }
 
 void initGL(int argc, char **argv)

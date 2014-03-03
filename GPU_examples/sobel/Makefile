@@ -11,14 +11,12 @@ LIB     := -lOpenCL
 CXXFLAGS    := -m64 -DUNIX $(WARN_FLAGS) $(OPT_FLAGS) $(INCLUDES)
 LDFLAGS     := $(LIBRARY_PATH) $(LIB)
 LIB_DIR	:= . 
-LIBS	:= X11 GL GLU freeglut Xxf86vm
-XTRA_LIB_DIR	:= /usr/lib/gcc/x86_64-linux-gnu/
-X11_LIB	:=	X11
+LIBS	:= glut GL GLU freeglut Xxf86vm
  
 .PHONY:     clean
  
 $(TARGET):  $(OBJ)
-	g++ -fPIC -m64  -o $@ $(OBJ) $(LDFLAGS) $(foreach D,$(LIB_DIR),-L$D) $(foreach L, $(LIBS), -l$L) $(foreach D,$(XTRA_LIB_DIR),-L$D) $(foreach L, $(X11_LIB), -l$L) 
+	g++ -fPIC -m64  -o $@ $(OBJ) $(foreach D,$(LIB_DIR),-L$D) $(foreach L, $(LIBS), -l$L) $(LDFLAGS)
  
  
 clean:

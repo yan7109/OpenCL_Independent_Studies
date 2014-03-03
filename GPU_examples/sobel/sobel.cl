@@ -19,7 +19,7 @@
 // This agreement shall be governed in all respects by the laws of the State of California and 
 // by the laws of the United States of America. 
 
-#include "../host/inc/defines.h"
+#include "defines.h"
 
 // Sobel filter kernel
 // frame_in and frame_out are different buffers. Specify restrict on
@@ -29,6 +29,7 @@ __attribute__((task))
 void sobel(global unsigned int * restrict frame_in, global unsigned int * restrict frame_out,
            const int iterations, const unsigned int threshold)
 {
+
     // Filter coefficients
     int Gx[3][3] = {{-1,-2,-1},{0,0,0},{1,2,1}};
     int Gy[3][3] = {{-1,0,1},{-2,0,2},{-1,0,1}};
@@ -38,22 +39,23 @@ void sobel(global unsigned int * restrict frame_in, global unsigned int * restri
 
     int count = 0;
     while (count != iterations) {
-        // Each cycle, shift a new pixel into the buffer.
+	count++; 
+	frame_out[count] = frame_in[count];
+/*       	// Each cycle, shift a new pixel into the buffer.
         // Unrolling this loop allows the compile to infer a shift register.
-        #pragma unroll
+        //#pragma unroll
         for (int i = COLS * 2 + 2; i > 0; --i) {
             rows[i] = rows[i - 1];
         }
         rows[0] = frame_in[count];
-
         int x_dir = 0;
         int y_dir = 0;
 
         // With these loops unrolled, one convolution can be computed every
         // cycle.
-        #pragma unroll
+//        #pragma unroll
         for (int i = 0; i < 3; ++i) {
-            #pragma unroll
+  //          #pragma unroll
             for (int j = 0; j < 3; ++j) {
                 unsigned int pixel = rows[i * COLS + j];
                 unsigned int b = pixel & 0xff;
@@ -80,6 +82,6 @@ void sobel(global unsigned int * restrict frame_in, global unsigned int * restri
             clamped = 0;
         }
 
-        frame_out[count++] = clamped;
-    }
+//        frame_out[count++] = clamped;
+*/    }
 }
