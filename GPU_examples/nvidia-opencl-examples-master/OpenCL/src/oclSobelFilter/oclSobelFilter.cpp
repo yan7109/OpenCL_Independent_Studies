@@ -55,7 +55,7 @@
 #ifndef min
 #define min(a,b) (a < b ? a : b)
 #endif
-
+#define GPU_PROFILING
 int *pArgc = NULL;
 char **pArgv = NULL;
 

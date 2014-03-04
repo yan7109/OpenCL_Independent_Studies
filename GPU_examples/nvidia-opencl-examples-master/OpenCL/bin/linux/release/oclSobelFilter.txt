@@ -39,40 +39,120 @@ Image Height (rows) for Device 0 = 1080...
 clCreateBuffer (Input and Output GMEM buffers, Device 0)...
 clSetKernelArg (0-4), Device 0...
 
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 82 fps | Proc. t = 0.00197 s | 1051.2 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1056.0 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00197 s | 1050.3 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 82 fps | Proc. t = 0.00198 s | 1045.0 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 90 fps | Proc. t = 0.00197 s | 1055.0 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 90 fps | Proc. t = 0.00197 s | 1055.1 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00197 s | 1050.6 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 82 fps | Proc. t = 0.00196 s | 1055.6 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 81 fps | Proc. t = 0.00199 s | 1041.8 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00197 s | 1054.9 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1055.8 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1056.7 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1057.5 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1056.6 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1057.0 Mpix/s
 
-Sobel Filter Toggled OFF...
-RGB Sobel Filter OFF | W: 1920 , H: 1080
+Threshold changed to 70.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 70.0 | # GPUs = 1 | 88 fps | Proc. t = 0.00196 s | 1055.8 Mpix/s
 
-Sobel Filter Toggled ON...
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
+Threshold changed to 60.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 60.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1058.4 Mpix/s
 
-Sobel Filter Toggled OFF...
-RGB Sobel Filter OFF | W: 1920 , H: 1080
+Threshold changed to 50.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 50.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00196 s | 1058.2 Mpix/s
 
-Sobel Filter Toggled ON...
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
+Threshold changed to 40.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 40.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1056.1 Mpix/s
 
-Sobel Filter Toggled OFF...
-RGB Sobel Filter OFF | W: 1920 , H: 1080
+Threshold changed to 30.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 30.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1056.6 Mpix/s
 
-Sobel Filter Toggled ON...
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
-OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0
+Threshold changed to 20.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 20.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1059.3 Mpix/s
 
-Sobel Filter Toggled OFF...
-RGB Sobel Filter OFF | W: 1920 , H: 1080
+Threshold changed to 10.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 10.0 | # GPUs = 1 | 88 fps | Proc. t = 0.00196 s | 1059.5 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00196 s | 1059.1 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 86 fps | Proc. t = 0.00197 s | 1054.6 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00198 s | 1049.3 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 92 fps | Proc. t = 0.00196 s | 1056.5 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 93 fps | Proc. t = 0.00197 s | 1054.9 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 92 fps | Proc. t = 0.00196 s | 1060.4 Mpix/s
+
+Threshold changed to 0.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 0.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00196 s | 1059.7 Mpix/s
+
+Threshold changed to 10.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 10.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1057.2 Mpix/s
+
+Threshold changed to 20.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 20.0 | # GPUs = 1 | 86 fps | Proc. t = 0.00196 s | 1057.7 Mpix/s
+
+Threshold changed to 30.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 30.0 | # GPUs = 1 | 88 fps | Proc. t = 0.00196 s | 1060.0 Mpix/s
+
+Threshold changed to 40.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 40.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1060.6 Mpix/s
+
+Threshold changed to 50.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 50.0 | # GPUs = 1 | 82 fps | Proc. t = 0.00196 s | 1060.2 Mpix/s
+
+Threshold changed to 60.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 60.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00197 s | 1055.0 Mpix/s
+
+Threshold changed to 70.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 70.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00196 s | 1059.8 Mpix/s
+
+Threshold changed to 80.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 80.0 | # GPUs = 1 | 78 fps | Proc. t = 0.00196 s | 1060.2 Mpix/s
+
+Threshold changed to 90.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 90.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00197 s | 1054.9 Mpix/s
+
+Threshold changed to 100.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 100.0 | # GPUs = 1 | 83 fps | Proc. t = 0.00196 s | 1058.6 Mpix/s
+
+Threshold changed to 110.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 110.0 | # GPUs = 1 | 92 fps | Proc. t = 0.00196 s | 1060.3 Mpix/s
+
+Threshold changed to 120.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 120.0 | # GPUs = 1 | 96 fps | Proc. t = 0.00196 s | 1059.7 Mpix/s
+
+Threshold changed to 130.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 130.0 | # GPUs = 1 | 84 fps | Proc. t = 0.00196 s | 1058.0 Mpix/s
+
+Threshold changed to 140.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 140.0 | # GPUs = 1 | 96 fps | Proc. t = 0.00195 s | 1060.7 Mpix/s
+
+Threshold changed to 150.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 150.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1057.3 Mpix/s
+
+Threshold changed to 160.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 160.0 | # GPUs = 1 | 94 fps | Proc. t = 0.00197 s | 1054.7 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 160.0 | # GPUs = 1 | 88 fps | Proc. t = 0.00196 s | 1057.0 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 160.0 | # GPUs = 1 | 86 fps | Proc. t = 0.00196 s | 1057.1 Mpix/s
+
+Threshold changed to 150.0...
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 150.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1056.7 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 150.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1056.9 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 150.0 | # GPUs = 1 | 87 fps | Proc. t = 0.00196 s | 1056.6 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 150.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1057.4 Mpix/s
+OpenCL GPU RGB Sobel Filter ON | W: 1920 , H: 1080 | Thresh. = 150.0 | # GPUs = 1 | 85 fps | Proc. t = 0.00196 s | 1057.0 Mpix/s
 
 Starting Cleanup...
 
